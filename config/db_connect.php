@@ -11,9 +11,5 @@ mysqli_set_charset($conn, 'utf8');
 if (!$conn) {
   die("Ошибка: " . mysqli_connect_error());
 }
-// else{
-//     echo "connect success";
-// }
-
-// mysqli_close($conn);
+ 
 ?>
