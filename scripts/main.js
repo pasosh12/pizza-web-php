@@ -1,10 +1,10 @@
 $("input").click(function (e) {
     e.preventDefault();
 
-    const total_cost = calculate_cost();
-    const selected_options = find_selected_options()
-    const attributes = find_name_attributes()
-    const formData = {}
+    let total_cost = calculate_cost();
+    let selected_options = find_selected_options()
+    let attributes = find_name_attributes()
+    let formData = {}
 
     function calculate_cost() {
         let result = 0;
@@ -45,14 +45,17 @@ $("input").click(function (e) {
     }
 
     formData['cost'] = total_cost;
-
+    
     $.ajax({
         url: 'form.php',
         type: "POST",
         data: 'jsonData=' + $.toJSON(formData),
         success: function (response) {
             result = JSON.parse(response)
-            $('.popup-fade').html(" <div class='popup'><p>Ваш чек:</p><ul> <li>Пицца: <span >" + result['pizza'] + "</span></li> <li>Размер: <span>" + result['size'] + "см</span></li> <li>Соус: <span>" + result['sauce'] + "</span></li><li>Суммарная стоимость: <span>" + result['cost'] + "р</span></li> </ul></div>");
+            for (let key of Object.keys(result)) {
+                const value = result[key]
+                $("#popup-" + key).text(value)
+            }
             $('.popup-fade').fadeIn()
         },
         error: function (result) {
