@@ -25,18 +25,7 @@ mysqli_close($conn);
     <title>Restaurant Website</title>
 </head>
 <body>
-    <div class="popup-fade">
-        <div class="popup">
-            <p>Ваш чек:</p>
-            <ul>
-                <li>Пицца: <span id="popup-pizza"></span></li>
-                <li>Размер: <span id="popup-size"></span></li>
-                <li>Соус: <span id="popup-sauce"></span></li>
-                <li>Суммарная стоимость: <span id="popup-cost"></span></li>
-            </ul>
-            <button class="popup-close">Новый заказ</button>
-        </div>
-    </div>
+      <div class="popup-fade"></div>  
     <form class="form" id="select_box" method="post" > 
         <label>Пицца</label>
         <select name="pizza" id="product" >
